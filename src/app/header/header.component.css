@@ -1,0 +1,25 @@
+header {
+	background: #FF6635;
+	color: #F6F4EF;
+}
+header h1 {
+	text-align: center;
+	font-size: 1.8em;
+	font-weight: bold;
+}
+header p {
+	text-align: center;
+	font-weight: bold;
+}
+
+header p.icon-facebook {
+	font-size: 1.8em;
+}
+
+header div.top-01 {
+	background-image: url("../../assets/imgs/top-01-sm.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 250px;
+	width: 100%;
+}

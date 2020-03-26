@@ -1,1 +1,31 @@
+body {
+	background: #F6F4EF;
+}
+
+/*
+COLORS
+
+CADET GRAY - #89A2AA
+PINK ORANGE - #FFA15B
+B'DAZZLED BLUE - #2A548E
+WHITE SMOKE - #F6F4EF
+SMASHED PUMPKIN - #FF6635
+*/
 /* You can add global styles to this file, and also import other style files */
+
+/*
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
