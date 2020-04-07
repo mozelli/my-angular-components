@@ -12,7 +12,6 @@ import { Product } from '../product';
 })
 export class ListComponent implements OnInit {
 
-	//products: Product[];
 	products$: Observable<Product[]>;
 	id: any;
 
@@ -21,23 +20,14 @@ export class ListComponent implements OnInit {
   	private router: Router,
   	private api: BarApiService
   	) { 
-
-  	//console.log(this.route.snapshot.params['id']);
   }
 
   ngOnInit(): void {
-  	this.route.params.subscribe((params) => {
+  	/*this.route.params.subscribe((params) => {
   		this.id = params.id;
   		console.log(this.id);
   		}
-  	);
-
-  	if (this.id) {
-  		console.log("Ok!");
-  	}
-  	else {
-  		console.log("Ops...");
-  	}
+  	);*/
 
   	//this.api.getProduct().subscribe((products) => this.products = products);
   	this.products$ = this.api.getProduct();

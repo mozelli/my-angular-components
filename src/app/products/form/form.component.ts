@@ -13,22 +13,20 @@ export class FormComponent implements OnInit {
 	profileForm = this.formBuilder.group({
 		name: [''],
 		category: [''],
-		amount: [''],
 		client_price: [''],
 		provider_price: ['']
 	});
 
   constructor(
   	private formBuilder: FormBuilder,
-  	private barApiServiceervice: BarApiService
+  	private barApiService: BarApiService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(products){
-  	//console.log(products);
-  	this.barApiServiceervice.addProduct(products).subscribe((result) => console.log(result));
+  	this.barApiService.addProduct(products).subscribe((result) => console.log(result));
 
   } 
 }
