@@ -1,42 +1,34 @@
-<section class="products-list">
+<section class="products-list my-3">
+  <div *ngIf="products$ | async as products; else carregando">
+    <div class="card" *ngFor="let product of products">
+      <div class="card-header bg-info text-white">
+        {{ product.name }}  
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Quantidade em estoque: </strong>{{ product.amount }}
+        </li>
+        <li class="list-group-item">
+          <strong>Preço venda: </strong>R${{ product.client_price }}
+        </li>
+      </ul>
+      <div class="card-body">
+        <!-- routerLinkActive="" -->
+        <a href="#" class="card-link">Editar</a>
+        <a [routerLink]="['/product/delete', product._id]" class="card-link text-danger">Excluir</a>
+      </div>
+      
+    </div>
+  </div>
+  <ng-template #carregando>
+    <span>Carregando...</span>
+  </ng-template>
+</section>
+
+<!--
 	<div class="row">
 		<div class="col-12">
-			<h3>Lista de produtos</h3>
+			<button class="btn btn-success btn-lg mb-3">Novo</button>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">
-			<table class="table table-sm">
-				<tbody>
-					<tr>
-						<td class="name-product">Brahma</td>
-					</tr>
-					<tr>
-						<td class="amount"><strong>Quantidade:</strong> 00</td>
-					</tr>
-					<tr>
-						<td class="price"><strong>Preco:</strong> R$0,00</td>
-					</tr>
-					<tr>
-						<td class="name-product">Kaiser</td>
-					</tr>
-					<tr>
-						<td class="amount table-warning"><strong>Quantidade:</strong> 00</td>
-					</tr>
-					<tr>
-						<td class="price"><strong>Preco:</strong> R$0,00</td>
-					</tr>
-					<tr>
-						<td class="name-product">Skol</td>
-					</tr>
-					<tr>
-						<td class="amount table-danger"><strong>Quantidade:</strong> 00</td>
-					</tr>
-					<tr>
-						<td class="price"><strong>Preco:</strong> R$0,00</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</section>
+-->
