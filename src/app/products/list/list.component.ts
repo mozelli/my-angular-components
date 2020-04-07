@@ -23,14 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  	/*this.route.params.subscribe((params) => {
-  		this.id = params.id;
-  		console.log(this.id);
-  		}
-  	);*/
-
   	//this.api.getProduct().subscribe((products) => this.products = products);
-  	this.products$ = this.api.getProduct();
+  	this.products$ = this.api.getProducts();
   }
-
 }

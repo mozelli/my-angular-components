@@ -14,8 +14,8 @@
       </ul>
       <div class="card-body">
         <!-- routerLinkActive="" -->
-        <a href="#" class="card-link">Editar</a>
-        <a [routerLink]="['/product/delete', product._id]" class="card-link text-danger">Excluir</a>
+        <a [routerLink]="['/products/edit', product._id]" class="card-link">Editar</a>
+        <a [routerLink]="['/products', product._id]" class="card-link text-danger">Excluir</a>
       </div>
       
     </div>

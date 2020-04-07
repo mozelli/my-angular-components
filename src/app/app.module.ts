@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { routing } from './app.routing'; // Routes
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { FormComponent } from './products/form/form.component';
     routing, //Routes
     HttpClientModule,
     ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
