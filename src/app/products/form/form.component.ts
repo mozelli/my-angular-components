@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { BarApiService } from '../../bar-api.service';
-import { AlertModalComponent } from '../../shared/alert-modal/alert-modal.component';
+import { AlertModalService } from '../../shared/alert-modal.service';
+
 
 @Component({
   selector: 'app-form',
@@ -15,13 +15,13 @@ export class FormComponent implements OnInit {
 
 	formProduct: FormGroup;
   submitted: boolean = false;
-  bsModalRef: BsModalRef;
 
   constructor(
   	private formBuilder: FormBuilder,
   	private barApiService: BarApiService,
     private route: ActivatedRoute,
-    private modalService: BsModalService
+    private alertModalService: AlertModalService
+    
   ) { }
 
   ngOnInit(): void {
@@ -68,14 +68,11 @@ export class FormComponent implements OnInit {
   }
 
   handleError() {
-    this.bsModalRef = this.modalService.show(AlertModalComponent);
-    this.bsModalRef.content.type = 'danger';
-    this.bsModalRef.content.message = 'Ops! Ocorreu um erro ao tentar criar um novo produto. Tente novamente mais tarde.';
+    this.alertModalService.showAlertDanger('Ops! Ocorreu um erro de conexão com a API. Tente novamente mais tarde.');
   }
 
   handleSuccess() {
-    this.bsModalRef = this.modalService.show(AlertModalComponent);
-    this.bsModalRef.content.message = 'Ok! Novo produto salvo com sucesso.';    
+    this.alertModalService.showAlertSuccess('Ok! Novo produto cadastrado.');
   }
 
   hasError(field: string) {
