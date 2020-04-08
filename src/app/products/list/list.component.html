@@ -1,6 +1,13 @@
 <section class="products-list my-3">
-  <div *ngIf="products$ | async as products; else carregando">
-    <div class="card" *ngFor="let product of products">
+  <div class="row">
+    <div class="col-12">
+      <a [routerLink]="['/products/new']" class="btn btn-primary">Novo</a>
+      <button type="button" class="btn btn-default" (click)="onRefresh()">Atualizar</button>
+      <a [routerLink]="['/']" class="btn btn-default">Sair</a>
+    </div>
+  </div>
+  <div *ngIf="products$ | async as products; else loadingError">
+    <div class="card border-info my-3" *ngFor="let product of products">
       <div class="card-header bg-info text-white">
         {{ product.name }}  
       </div>
@@ -20,7 +27,14 @@
       
     </div>
   </div>
-  <ng-template #carregando>
-    <span>Carregando...</span>
+  <ng-template #loadingError>
+    <div *ngIf="error$ | async; else loading">
+      <p>Erro ao tentar acessar a API.</p> 
+      <p>Informe o erro ao administrador do sistema.</p> 
+      <p>Tente novamente mais tarde.</p>
+    </div>
+    <ng-template #loading>
+      <span>Carregando...</span>  
+    </ng-template>
   </ng-template>
 </section>
