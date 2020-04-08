@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
 	content = [{
-  		title: "Your Site Name",
+  		title: "Your Project Name",
   		subtitle: "This is a subtitle about your site!",
   	}];
 
