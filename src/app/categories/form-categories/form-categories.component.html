@@ -6,12 +6,10 @@
       			<input 
       				type="text" 
       				class="form-control" 
-      				id="category" 
+      				id="name"
+      				formControlName="name"
+      				[ngClass]="{ 'is-invalid': submitted && hasError('name') }" 
       			>
-      			<!--
-      				formControlName="category"
-      				[ngClass]="{ 'is-invalid': submitted && hasError('category') }"
-      			-->
       			<div class="invalid-feedback">
         			Este campo é obrigatório!
       			</div>

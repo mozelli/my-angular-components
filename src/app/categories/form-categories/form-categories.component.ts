@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormCategoriesComponent implements OnInit {
 
 	formCategory: FormGroup;
+	submitted: boolean = false;
 
   constructor(
   	private formBuilder: FormBuilder
@@ -22,11 +23,17 @@ export class FormCategoriesComponent implements OnInit {
   }
 
   onSubmit() {
+  	this.submitted = true;
   	console.log("Submitted");
   }
 
   onCancel() {
+  	this.formCategory.reset();
   	console.log("Cancel");
+  }
+
+  hasError(field: string) {
+  	return this.formCategory.get(field).errors;
   }
 
 }
