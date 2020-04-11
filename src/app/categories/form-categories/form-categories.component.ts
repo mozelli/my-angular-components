@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AlertModalService } from '../../shared/alert-modal.service';
+
 @Component({
   selector: 'app-form-categories',
   templateUrl: './form-categories.component.html',
@@ -12,7 +14,8 @@ export class FormCategoriesComponent implements OnInit {
 	submitted: boolean = false;
 
   constructor(
-  	private formBuilder: FormBuilder
+  	private formBuilder: FormBuilder,
+    private alertModalService: AlertModalService,
   	) { }
 
   ngOnInit(): void {
@@ -24,7 +27,12 @@ export class FormCategoriesComponent implements OnInit {
 
   onSubmit() {
   	this.submitted = true;
-  	console.log("Submitted");
+    if (this.formCategory.valid) {
+      this.alertModalService.showAlertSuccess("Ok! Form successful submitted.");
+      console.log("Submitted");
+    } else {
+      this.alertModalService.showAlertDanger("Ops! Can not to submit the form. Try again later. Sorry...");
+    }
   }
 
   onCancel() {

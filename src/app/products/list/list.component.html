@@ -28,10 +28,13 @@
     </div>
   </div>
   <ng-template #loadingError>
+
     <div *ngIf="error$ | async; else loading">
-      <p>Erro ao tentar acessar a API.</p> 
-      <p>Informe o erro ao administrador do sistema.</p> 
-      <p>Tente novamente mais tarde.</p>
+      <div class="alert alert-danger alert-dismissible fade show my-3" role="alert" style="margin-bottom: 0px;">
+        <p><strong>Erro ao tentar acessar a API.</strong></p> 
+        <p>Informe o erro ao administrador do sistema.</p> 
+        <p>Tente novamente mais tarde.</p>
+      </div>
     </div>
     <ng-template #loading>
       <span>Carregando...</span>  
