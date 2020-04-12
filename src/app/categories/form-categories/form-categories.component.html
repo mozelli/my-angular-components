@@ -1,0 +1,34 @@
+<section class="category mt-3">
+	<form class="needs-validation" novalidate [formGroup]="formCategory">
+		<div class="form-row">
+    		<div class="col-12 mb-3">
+      			<label for="name">Nome da categoria</label>
+      			<input 
+      				type="text" 
+      				class="form-control" 
+      				id="name"
+      				formControlName="name"
+      				[ngClass]="{ 'is-invalid': submitted && hasError('name') }" 
+      			>
+      			<div class="invalid-feedback">
+        			Este campo é obrigatório!
+      			</div>
+    		</div>
+    	</div>
+    	<div class="form-row">
+    		<div class="col-12">
+    			<button 
+    				type="submit" 
+    				(click)="onSubmit()" 
+    				class="btn btn-primary btn-lg">Salvar</button>
+    			<button 
+    				type="button"
+    				(click)="onCancel()"
+    				class="btn btn-default btn-lg">Cancelar</button>
+    			<a
+    				[routerLink]="['/']"
+    				class="btn btn-default btn-lg">Sair</a>
+    		</div>
+    	</div>
+	</form>
+</section>
