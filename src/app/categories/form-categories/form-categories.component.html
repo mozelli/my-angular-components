@@ -15,19 +15,17 @@
       			</div>
     		</div>
     	</div>
-    	<div class="form-row">
+    	<div class="form-row mb-3">
     		<div class="col-12">
     			<button 
     				type="submit" 
-    				(click)="onSubmit()" 
-    				class="btn btn-primary btn-lg">Salvar</button>
-    			<button 
-    				type="button"
-    				(click)="onCancel()"
-    				class="btn btn-default btn-lg">Cancelar</button>
+    				(click)="onSubmit()"
+    				class="btn btn-success btn-lg mr-2">Salvar</button>
     			<a
-    				[routerLink]="['/']"
-    				class="btn btn-default btn-lg">Sair</a>
+    				[routerLink]="['/categories/list']"
+    				class="btn btn-info btn-lg">
+            Sair
+          </a>
     		</div>
     	</div>
 	</form>

@@ -15,21 +15,24 @@ export class CategoriesService {
 
   constructor(private httpClient: HttpClient) { }
 
+  addCategory(category): Observable<Category> {
+    return this.httpClient.post<Category>(`${this.API}categories`, category).pipe(take(1)) ;
+  }
+
   getCategories(): Observable<Category[]> {
   	return this.httpClient.get<Category[]>(`${this.API}categories`);
+  }
+
+  showCategory(id): Observable<Category> {
+    return this.httpClient.get<Category>(`${this.API}categories/${id}`);
+  }
+
+  editCategory(category: Category): Observable<Category> {
+    return this.httpClient.put<Category>(`${this.API}categories/${category.id}`, category);
   }
 
   deleteCategory(id: number) {
     return this.httpClient.delete(`${this.API}categories/${id}`);
   }
 
-  /*
-	showProduct(id: any) {
-      return this.http.get(`${this.URL}/products/${id}`);
-    }
-
-  	addProduct(product: Product): Observable<Product> {
-  		return this.http.post<Product>(`${this.URL}/products`, product).pipe(take(1)) ;
-  	}
-  */
 }
