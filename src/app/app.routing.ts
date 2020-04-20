@@ -5,8 +5,10 @@ import { ProductsComponent } from './products/products.component';
 import { ListComponent } from './products/list/list.component';
 import { FormComponent } from './products/form/form.component';
 
+import { CategoriesComponent } from './categories/categories.component';
+
 const appRoutes: Routes = [
-  	{ path: '', component: ProductsComponent },
+  	{ path: '', component: CategoriesComponent },
   	{ path: 'products', component: ListComponent },
   	{ path: 'products/edit/:id', component: FormComponent },
   	{ path: 'products/new', component: FormComponent },

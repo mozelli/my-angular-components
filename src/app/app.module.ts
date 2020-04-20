@@ -10,8 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { ListComponent } from './products/list/list.component';
 import { FormComponent } from './products/form/form.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { FormCategoriesComponent } from './categories/form-categories/form-categories.component';
+import { CardComponent } from './components/card/card.component';
+
+import { CategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -20,15 +21,15 @@ import { FormCategoriesComponent } from './categories/form-categories/form-categ
     ProductsComponent,
     ListComponent,
     FormComponent,
-    CategoriesComponent,
-    FormCategoriesComponent
+    CardComponent
   ],
   imports: [
     BrowserModule,
     routing, //Routes
     HttpClientModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CategoriesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
