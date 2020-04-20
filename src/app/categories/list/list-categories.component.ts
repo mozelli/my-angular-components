@@ -29,12 +29,18 @@ export class ListCategoriesComponent implements OnInit {
   	console.log(id);
   }
 
-  onDelete(id: number) {
-  	this.categoriesService.deleteCategory(id).subscribe((result) => {
-  		if (result) {
-  			this.onRefresh();
-  		}
-  	});
+  onDelete(category: Category) {
+    let result: boolean;
+
+    result = confirm(`Atenção! A categoria "${category.name}" e todos os seus produtos serão excluídos. Deseja realmente continuar?`);
+
+    if (result) {
+      this.categoriesService.deleteCategory(category.id).subscribe((result) => {
+        if (result) {
+          this.onRefresh();
+        }
+      });
+    }
   }
 
 }

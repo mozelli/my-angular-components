@@ -1,20 +1,41 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Nome</th>
-			<th colspan="2">Opções</th>
-		</tr>
-	</thead>
-	<tbody *ngFor="let category of categories | async">
-		<tr>
-			<td>{{ category.id }}</td>
-			<td>{{ category.name }}</td>
-			<td>
-				<button type="button" class="btn btn-info btn-sm">Editar</button>
-			<td>
-				<button type="button" class="btn btn-warning btn-sm" (click)="onDelete(category.id)">Excluir</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<section>
+	<div class="row my-3">
+		<div class="col-12">
+			<a type="button" [routerLink]="['/categories/form']" class="btn btn-info btn-lg">Nova categoria</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th colspan="2" class="text-center">Opções</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let category of categories | async">
+					<tr>
+						<td>{{ category.id }}</td>
+						<td>{{ category.name }}</td>
+						<td>
+							<a 
+								type="button" 
+								[routerLink]="['/categories/form', category.id]" 
+								class="btn btn-info btn-sm">
+								Editar
+							</a>
+						<td>
+							<button 
+								type="button" 
+								class="btn btn-warning btn-sm" 
+								(click)="onDelete(category)">
+								Excluir
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
