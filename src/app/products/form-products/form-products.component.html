@@ -1,0 +1,49 @@
+<section class="product mt-3">
+	<form class="needs-validation" novalidate [formGroup]="formProduct"> 
+		<div class="form-row">
+    	<div class="col-12 mb-3">
+      	<label for="name">Nome do produto</label>
+        <input 
+          type="text" 
+      		class="form-control" 
+      		id="name" 
+      		formControlName="name"
+      		[ngClass]="{ 'is-invalid': submitted && hasError('name') }"
+      	>
+      	<div class="invalid-feedback">
+        	Este campo é obrigatório!
+      	</div>
+    	</div>
+    	<div class="col-12 mb-3">
+      	<label for="category">Categoria</label>
+      		<select 
+            class="custom-select"
+            id="categories_id"
+            formControlName="categories_id"
+            [ngClass]="{ 'is-invalid': submitted && hasError('categories_id') }"
+          >
+            <option 
+              value="{{ category.id }}" *ngFor="let category of categories">{{ category.name }}</option>
+          </select>
+      		<div class="invalid-feedback">
+        		Este campo é obrigatório!
+      		</div>
+    		</div>
+    	</div>
+    	<div class="form-row">
+    		<div class="col-12">
+    			<button 
+    				type="submit" 
+    				(click)="onSubmit()" 
+    				class="btn btn-primary btn-lg">
+            Salvar
+          </button>
+    			<a
+    				[routerLink]="['/products']"
+    				class="btn btn-default btn-lg">
+            Sair
+          </a>
+    		</div>
+    	</div>
+	</form>
+</section>

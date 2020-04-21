@@ -5,16 +5,16 @@ import { Observable, Subject, empty } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 
-import { BarApiService } from '../../bar-api.service';
+import { ProductsService } from '../products.service';
 import { AlertModalService } from '../../shared/alert-modal.service';
 import { Product } from '../product';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  templateUrl: './list-products.component.html',
+  styleUrls: ['./list-products.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListProductsComponent implements OnInit {
 
 	products$: Observable<Product[]>;
   error$ = new Subject<boolean>();
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
   	private route: ActivatedRoute,
     private location: Location,
     private router: Router,
-  	private api: BarApiService,
+  	private api: ProductsService,
     private alertModalService: AlertModalService,
   	) { 
   }

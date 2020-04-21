@@ -1,49 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
-import { BarApiService } from '../../bar-api.service';
+import { ProductsService } from '../products.service';
+import { Product } from '../Product';
+import { CategoriesService } from '../../categories/categories.service';
+import { Category } from '../../categories/Category';
+
 import { AlertModalService } from '../../shared/alert-modal.service';
 
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'app-form-products',
+  templateUrl: './form-products.component.html',
+  styleUrls: ['./form-products.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormProductsComponent implements OnInit {
 
 	formProduct: FormGroup;
   submitted: boolean = false;
+  categories: Category[];
 
   constructor(
   	private formBuilder: FormBuilder,
-  	private barApiService: BarApiService,
+  	private productsService: ProductsService,
+    private categoriesService: CategoriesService,
     private route: ActivatedRoute,
     private alertModalService: AlertModalService,
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.formProduct = this.formBuilder.group({
+      id: [null],
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      categories_id: [null, [Validators.required]]
+    });
+
+    /*this.route.params.subscribe((params) => {
       const id: any = params['id'];
-      const product$ = this.barApiService.showProduct(id);
+      const product$ = this.productsService.showProduct(id);
       product$.subscribe((product) => {
         this.updateForm(product);
       });
-    });
+    });*/
 
-    this.formProduct = this.formBuilder.group({
-      //id: [null],
-      name: [null, [Validators.required, Validators.minLength(3)]],
-      category: [null, [Validators.required]]
-    });
+    this.categoriesService.getCategories().subscribe((categories) => this.categories = categories);
   }
 
   onSubmit(){
     this.submitted = true;
     if (this.formProduct.valid){
-      this.barApiService.addProduct(this.formProduct.value)
+      this.productsService.addProduct(this.formProduct.value)
         .subscribe(
           success => {
             this.submitted = false, 
@@ -53,7 +62,7 @@ export class FormComponent implements OnInit {
           error => 
             this.alertModalService.showAlertDanger('Ops! Ocorreu um erro de conexão com a API. Tente novamente mais tarde.'),
           () => console.log("Request completed.")
-        );
+        );//console.log(this.formProduct.value);
     }
   }
 
