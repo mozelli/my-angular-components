@@ -5,6 +5,7 @@ import { take } from 'rxjs/Operators';
 import { environment } from '../../environments/environment';
 
 import { Product } from './Product';
+import { Category } from '../categories/Category';
 
 @Injectable({
   	providedIn: 'root'
@@ -19,8 +20,12 @@ export class ProductsService {
       return this.http.post<Product>(`${this.API}categories/${product.categories_id}/products`, product).pipe(take(1)) ;
     }
 
-    getProducts(): Observable<Product[]> {
-  		return this.http.get<Product[]>(`${this.API}products`);
+    getProductsByCategoryId(categories_id: number): Observable<Product[]> {
+      return this.http.get<Product[]>(`${this.API}categories/${categories_id}/products`) ;
+    }
+    
+    getProducts(): Observable<Category[]> {
+  		return this.http.get<Category[]>(`${this.API}categories/products`);
   	}
 
     showProduct(id: any) {

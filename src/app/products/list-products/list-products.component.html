@@ -2,21 +2,41 @@
   <div class="row">
     <div class="col-12">
       <a [routerLink]="['/products/form']" class="btn btn-primary">Novo</a>
-      <button type="button" class="btn btn-default" (click)="onRefresh()">Atualizar</button>
-      <a [routerLink]="['/']" class="btn btn-default">Sair</a>
+      <a href="#" (click)="onRefresh()" class="ml-3">
+        <img 
+          class="icon-refresh" 
+          src="../../../assets/imgs/icon_refresh.svg" 
+          alt="Atualizar!" 
+          title="Atualizar"
+          >
+      </a>
+      <a [routerLink]="['/']" class="btn btn-default ml-3 text-info">
+        <strong>Painel de Controle</strong>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <span class="info-text text-danger">* Para mais informações sobre o produto, toque sobre ele.</span>
     </div>
   </div>
   <div *ngIf="products$ | async as products; else loadingError">
-    <div class="card border-info my-3" *ngFor="let product of products">
-      <div class="card-header bg-info text-white">
-        {{ product.name }}  
+    <div class="card border-warning my-3" *ngFor="let product of products">
+      <div class="card-header bg-warning text-white">
+        {{ product.name }}
       </div>
       <div class="card-body">
-        <!-- routerLinkActive="" -->
-        <a [routerLink]="['/products/form', product._id]" class="card-link">Editar</a>
-        <!--a [routerLink]="['/products', product._id]" class="card-link text-danger">Excluir</a-->
+        <ul class="list-group list-group-flush">
+          <a 
+            class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+            [routerLink]="['/product/', item.id]" 
+            *ngFor="let item of product.products"
+          >
+            {{ item.name }}
+            <span class="badge badge-secondary badge-preco">R$0,00</span> 
+          </a>
+        </ul>
       </div>
-      
     </div>
   </div>
   <ng-template #loadingError>

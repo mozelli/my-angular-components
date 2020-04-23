@@ -1,10 +1,16 @@
-section.products-list {
-
-}
-
-
-
 section.products-list .card-header {
 	font-size: 1.3em;
 	font-weight: bold;
+}
+
+ul li span.badge-preco {
+	font-size: 1em;
+}
+
+img.icon-refresh {
+	max-height: 30px;
+}
+
+span.info-text {
+	font-size: 0.7em;
 }

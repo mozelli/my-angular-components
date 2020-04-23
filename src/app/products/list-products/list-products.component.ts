@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { ProductsService } from '../products.service';
 import { AlertModalService } from '../../shared/alert-modal.service';
 import { Product } from '../product';
+import { Category } from '../../categories/Category';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +17,7 @@ import { Product } from '../product';
 })
 export class ListProductsComponent implements OnInit {
 
-	products$: Observable<Product[]>;
+	products$: Observable<Category[]>;
   error$ = new Subject<boolean>();
 	id: any;
 
